@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using SmartCtl.Domain;
 
 namespace SmartCtl.Db.Utility
@@ -18,6 +19,14 @@ namespace SmartCtl.Db.Utility
             }
 
             return _objs.ToList();
+        }
+
+        public async Task<List<DriveInformation>> ListAllAsync()
+        {
+            using (SmartCtlContext _ctx = new SmartCtlContext())
+            {
+                return await _ctx.DriveInformation.ToListAsync();
+            }
         }
     }
 }
