@@ -8,12 +8,7 @@ using Newtonsoft.Json;
 using SmartCtl.Db;
 using SmartCtl.Db.Utility;
 using SmartCtl.Domain;
-<<<<<<< HEAD
 using SmartCtl.Domain.Model;
-=======
-using SmartCtlDriveApp.Model;
->>>>>>> f1bc0fb3fb847744c599ad3aed2f4686cf8a44b9
-
 namespace SmartTest
 {
     [TestClass]
