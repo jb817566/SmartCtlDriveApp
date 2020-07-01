@@ -10,6 +10,8 @@ import { DriveInformationService } from "../services/drive-information.service";
 export class DriveInfoListComponent {
   public currentCount = 0;
   infoList: Array<DriveInformation> = undefined;
+  isChecked: Map<number, boolean> = new Map<number, boolean>();
+  PoolType: string = undefined;
   sortField: string = undefined;
   isDesc: boolean;
   sortAlphaNum = (a, b) => a.localeCompare(b, 'en', { numeric: true });
@@ -24,6 +26,25 @@ export class DriveInfoListComponent {
 
     }
   }
+  hasChecks() {
+    let _b = false;
+    for (var x in this.isChecked) {
+      _b = _b || this.isChecked[x];
+    }
+    return _b;
+  }
+
+  getZFSCommand() {
+    let _zfsCommand = `zfs create ${this.PoolType}`;
+    const _arr = [];
+    for (var x in this.isChecked) {
+      if(this.isChecked[x]){
+        _zfsCommand += ` ${this.infoList.filter(a => a.id == x)[0].serialNumber}`;
+      }
+    }
+    return _zfsCommand;
+  }
+
   selectSortBy(field: string) {
     this.isDesc = !this.isDesc;
     this.sortField = field;

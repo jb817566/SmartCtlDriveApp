@@ -1,5 +1,7 @@
 <h1>Drive Listing <i class="fa fa-hdd"></i></h1>
-
+<div *ngIf="hasChecks()">
+  <code>{{getZFSCommand()}}</code>
+</div>
 <div class="row" class="text-small">
   <table class="table" *ngIf="infoList">
     <thead>
@@ -11,6 +13,11 @@
     </thead>
     <tbody *ngFor="let d of getOrderedList(infoList); let i = index">
       <tr>
+        <td>
+          <div class="checkbox">
+            <input type="checkbox" [(ngModel)]="isChecked[d.id]"/>
+          </div>
+        </td>
         <td>{{ d.id }}</td>
         <td>{{ d.serialNumber }}</td>
         <td>{{ d.modelName }}</td>
