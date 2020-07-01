@@ -3,52 +3,33 @@
 <div class="row" class="text-small">
   <table class="table" *ngIf="infoList">
     <thead>
-      <th
-        style="cursor: pointer;"
-        (click)="selectSortBy(col)"
-        *ngFor="let col of columns"
-      >
-      <i *ngIf="sortField===col" class="fa" [ngClass]="{'fa-chevron-down': isDesc,'fa-chevron-up': !isDesc}"></i>
-        {{ col }}
-      </th>
-      <!-- <th>id</th>
-        <th>Serial Number</th>
-        <th>Model Name</th>
-        <th>Model Family</th>
-        <th>Form Factor</th>
-        <th>Block Count</th>
-        <th>Bytes Count</th>
-        <th>Firmware Version</th>
-        <th>RPM</th>
-        <th>ATA Version Minor</th>
-        <th>ATA Version Major</th>
-        <th>ATA Version Name</th>
-        <th>Sata Speed</th>
-        <th>SmartOK</th>
-        <th>Has Error Recovery</th>
-        <th>Power On Hours</th>
-        <th>Power Cycle Count</th>
-        <th>Temperature</th> -->
+      <tr>
+        <th style="cursor: pointer;" (click)="selectSortBy(col)" *ngFor="let col of columns">
+          <i *ngIf="sortField===col" class="fa" [ngClass]="{'fa-chevron-down': isDesc,'fa-chevron-up': !isDesc}"></i>{{ col }}
+        </th>
+      </tr>
     </thead>
     <tbody *ngFor="let d of getOrderedList(infoList); let i = index">
-      <td>{{ d.id }}</td>
-      <td>{{ d.serialNumber }}</td>
-      <td>{{ d.modelName }}</td>
-      <td>{{ d.modelFamily }}</td>
-      <td>{{ d.formFactor }}</td>
-      <td>{{ d.blockCount }}</td>
-      <td>{{ d.bytesCount }}</td>
-      <td>{{ d.firmwareVersion }}</td>
-      <td>{{ d.rpm }}</td>
-      <td>{{ d.ataVersionMinor }}</td>
-      <td>{{ d.ataVersionMajor }}</td>
-      <td>{{ d.ataVersionName }}</td>
-      <td>{{ d.sataSpeed }}</td>
-      <td>{{ d.smartOK }}</td>
-      <td>{{ d.hasErrorRecovery }}</td>
-      <td>{{ d.powerOnHours }}</td>
-      <td>{{ d.powerCycleCount }}</td>
-      <td>{{ d.temperature }}</td>
+      <tr>
+        <td>{{ d.id }}</td>
+        <td>{{ d.serialNumber }}</td>
+        <td>{{ d.modelName }}</td>
+        <td>{{ d.modelFamily }}</td>
+        <td>{{ d.formFactor }}</td>
+        <td>{{ d.blockCount }}</td>
+        <td>{{ d.bytesCount }}</td>
+        <td>{{ d.firmwareVersion }}</td>
+        <td>{{ d.rpm }}</td>
+        <td>{{ d.ataVersionMinor }}</td>
+        <td>{{ d.ataVersionMajor }}</td>
+        <td>{{ d.ataVersionName }}</td>
+        <td>{{ d.sataSpeed }}</td>
+        <td>{{ d.smartOK }}</td>
+        <td>{{ d.hasErrorRecovery }}</td>
+        <td>{{ d.powerOnHours }}</td>
+        <td>{{ d.powerCycleCount }}</td>
+        <td>{{ d.temperature }}</td>
+      </tr>
     </tbody>
   </table>
 </div>
