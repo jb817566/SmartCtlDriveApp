@@ -39,7 +39,7 @@ export class DriveInfoListComponent {
     const _arr = [];
     for (var x in this.isChecked) {
       if(this.isChecked[x]){
-        _zfsCommand += ` ${this.infoList.filter(a => a.id == x)[0].serialNumber}`;
+        _zfsCommand += ` ${this.infoList.filter(a => Number(a.id) === Number(x))[0].serialNumber}`;
       }
     }
     return _zfsCommand;

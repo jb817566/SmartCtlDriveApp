@@ -1,4 +1,6 @@
 ﻿using System;
+using SmartCtl.Db.Utility;
+using SmartCtl.Domain;
 
 namespace SmartCtlDriveApp
 {
@@ -6,7 +8,7 @@ namespace SmartCtlDriveApp
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            //new DriveInformationUtility
         }
     }
 }

@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\SmartCtl.Db\SmartCtl.Db.csproj" />
     <ProjectReference Include="..\SmartCtl.Domain\SmartCtl.Domain.csproj" />
   </ItemGroup>
 

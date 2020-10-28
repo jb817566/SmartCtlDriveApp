@@ -11,7 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartCtl.Domain", "SmartCtl
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartCtl.Db", "SmartCtl.Db\SmartCtl.Db.csproj", "{E22DDD96-F336-4560-A621-DE5A2A1C17AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartCtlDriveWebApp", "SmartCtlDriveWebApp\SmartCtlDriveWebApp.csproj", "{8590E1BB-27C5-4075-9926-A5B9B19EF373}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartCtlDriveWebApp", "SmartCtlDriveWebApp\SmartCtlDriveWebApp.csproj", "{8590E1BB-27C5-4075-9926-A5B9B19EF373}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartCtl.Console", "SmartCtl.Console\SmartCtl.Console.csproj", "{1DB5CA23-E181-4372-84CF-51AA9E567DEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartCtl.API", "SmartCtl.API\SmartCtl.API.csproj", "{F9299ECE-39C8-4A28-A710-6E53BAD441DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +43,14 @@ Global
 		{8590E1BB-27C5-4075-9926-A5B9B19EF373}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8590E1BB-27C5-4075-9926-A5B9B19EF373}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8590E1BB-27C5-4075-9926-A5B9B19EF373}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DB5CA23-E181-4372-84CF-51AA9E567DEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DB5CA23-E181-4372-84CF-51AA9E567DEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DB5CA23-E181-4372-84CF-51AA9E567DEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DB5CA23-E181-4372-84CF-51AA9E567DEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F9299ECE-39C8-4A28-A710-6E53BAD441DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9299ECE-39C8-4A28-A710-6E53BAD441DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9299ECE-39C8-4A28-A710-6E53BAD441DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9299ECE-39C8-4A28-A710-6E53BAD441DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
