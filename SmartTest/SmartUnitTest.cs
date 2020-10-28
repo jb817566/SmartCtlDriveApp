@@ -8,12 +8,21 @@ using Newtonsoft.Json;
 using SmartCtl.Db;
 using SmartCtl.Db.Utility;
 using SmartCtl.Domain;
+using SmartCtl.Domain.Entity;
 using SmartCtl.Domain.Model;
+using SmartCtl.Domain.Utility;
+
 namespace SmartTest
 {
     [TestClass]
     public class SmartUnitTest
     {
+        [TestMethod]
+        public async Task ZFSTest()
+        {
+            Dictionary<ZFSPool, List<ZFSPoolInfo>> _info = await new ZFSInfoUtility().GetZFSInfo();
+        }
+
         [TestMethod]
         public async Task IngestData()
         {

@@ -1,4 +1,5 @@
 ﻿using SmartCtl.Domain;
+using SmartCtl.Domain.Entity;
 
 namespace SmartCtl.Domain.Model
 

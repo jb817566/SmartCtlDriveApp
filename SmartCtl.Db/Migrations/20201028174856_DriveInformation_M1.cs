@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SmartCtl.Db.Migrations
 {
@@ -28,11 +29,46 @@ namespace SmartCtl.Db.Migrations
                     HasErrorRecovery = table.Column<bool>(nullable: false),
                     PowerOnHours = table.Column<int>(nullable: false),
                     PowerCycleCount = table.Column<int>(nullable: false),
-                    Temperature = table.Column<int>(nullable: false)
+                    Temperature = table.Column<int>(nullable: false),
+                    DateLastUpdated = table.Column<DateTime>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_DriveInformation", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ZFSPool",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    PoolName = table.Column<string>(nullable: true),
+                    RaidLevel = table.Column<int>(nullable: false),
+                    MountPoint = table.Column<string>(nullable: true),
+                    DateCreated = table.Column<DateTime>(nullable: false),
+                    MemberCount = table.Column<int>(nullable: false),
+                    Capacity = table.Column<double>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ZFSPool", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "ZFSPoolInfo",
+                columns: table => new
+                {
+                    ID = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    RaidLevel = table.Column<int>(nullable: false),
+                    DriveID = table.Column<int>(nullable: false),
+                    Capacity = table.Column<double>(nullable: false),
+                    PoolID = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ZFSPoolInfo", x => x.ID);
                 });
         }
 
@@ -40,6 +76,12 @@ namespace SmartCtl.Db.Migrations
         {
             migrationBuilder.DropTable(
                 name: "DriveInformation");
+
+            migrationBuilder.DropTable(
+                name: "ZFSPool");
+
+            migrationBuilder.DropTable(
+                name: "ZFSPoolInfo");
         }
     }
 }

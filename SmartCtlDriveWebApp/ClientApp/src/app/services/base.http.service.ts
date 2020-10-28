@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class BaseService {
   constructor(public http: HttpClient) {
   }
-  apiBase = 'http://localhost:59801';
+  apiBase = 'http://192.168.1.54:17800';
 
   httpOptions = {
     headers: new HttpHeaders({

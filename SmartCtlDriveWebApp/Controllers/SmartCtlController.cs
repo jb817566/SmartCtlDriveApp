@@ -11,6 +11,7 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using SmartCtl.Db.Utility;
 using SmartCtl.Domain;
+using SmartCtl.Domain.Entity;
 using SmartCtl.Domain.Model;
 
 namespace SmartCtlDriveWebApp.Controllers

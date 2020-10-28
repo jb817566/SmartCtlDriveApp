@@ -11,7 +11,9 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using SmartCtl.Db.Utility;
 using SmartCtl.Domain;
+using SmartCtl.Domain.Entity;
 using SmartCtl.Domain.Model;
+using SmartCtl.Domain.Utility;
 
 namespace SmartCtlDriveWebApp.Controllers
 {
@@ -31,14 +33,23 @@ namespace SmartCtlDriveWebApp.Controllers
         {
             return await DBUtility.ListAllAsync();
         }
-        [HttpGet("ingest")]
-        public async Task<bool> IngestData([FromQuery] string drives)
+        [HttpGet("drives/ingest")]
+        public async Task<bool> IngestDriveData([FromQuery] string drives)
         {
-            await GetFromDrives(drives);
+            List<DriveInformation> _infos = await GetFromDrives(drives);
+            await new DriveInformationUtility().AddUpdateMany(_infos);
             return true;
         }
 
-        private static async Task GetFromDrives( string drives)
+        [HttpGet("zfs/ingest")]
+        public async Task<bool> IngestZFSData()
+        {
+            var _infos = await new ZFSInfoUtility().GetZFSInfo();
+            //await new DriveInformationUtility().AddUpdateMany(_infos);
+            return true;
+        }
+
+        private static async Task<List<DriveInformation>> GetFromDrives( string drives)
         {
             string localDir = new FileInfo(Assembly.GetExecutingAssembly().Location).Directory.FullName;
 
@@ -54,7 +65,7 @@ namespace SmartCtlDriveWebApp.Controllers
                     //System.Console.WriteLine(_o.ToString());
                     _so.Add(JsonConvert.DeserializeObject<SmartOutput>(_o.ToString()));
                 }));
-                await PooledInvokeAsync(_tasksToRun, 6);
+                await _tasksToRun.PooledInvokeAsync(6);
             }
             else
             {
@@ -81,38 +92,10 @@ namespace SmartCtlDriveWebApp.Controllers
 
                 }
             }
-            await new DriveInformationUtility().AddMany(_objs);
+
+            return _objs;
         }
-        public static async Task PooledInvokeAsync(IEnumerable<Func<Task>> taskFactories, int maxDegreeOfParallelism)
-        {
-            if (taskFactories == null) throw new ArgumentNullException(nameof(taskFactories));
-            if (maxDegreeOfParallelism <= 0) throw new ArgumentException(nameof(maxDegreeOfParallelism));
-
-            Func<Task>[] queue = taskFactories.ToArray();
-
-            if (queue.Length == 0)
-            {
-                return;
-            }
-
-            List<Task> tasksInFlight = new List<Task>(maxDegreeOfParallelism);
-            int index = 0;
-
-            do
-            {
-                while (tasksInFlight.Count < maxDegreeOfParallelism && index < queue.Length)
-                {
-                    Func<Task> taskFactory = queue[index++];
-
-                    tasksInFlight.Add(Task.Run(() => taskFactory()));
-                }
-
-                Task completedTask = await Task.WhenAny(tasksInFlight).ConfigureAwait(false);
-                await completedTask.ConfigureAwait(false);
-                tasksInFlight.Remove(completedTask);
-            }
-            while (index < queue.Length || tasksInFlight.Count != 0);
-        }
+     
 
     }
 }

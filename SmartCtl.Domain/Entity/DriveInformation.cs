@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using SmartCtl.Domain.Model;
-using SmartCtlDriveApp.Model;
 
-namespace SmartCtl.Domain
+namespace SmartCtl.Domain.Entity
 {
     public class DriveInformation
     {
@@ -26,5 +22,6 @@ namespace SmartCtl.Domain
         public int PowerOnHours { get; set; }
         public int PowerCycleCount { get; set; }
         public int Temperature { get; set; }
+        public DateTime? DateLastUpdated { get; set; }
     }
 }

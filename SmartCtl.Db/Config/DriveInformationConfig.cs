@@ -4,6 +4,7 @@ using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using SmartCtl.Domain;
+using SmartCtl.Domain.Entity;
 
 namespace SmartCtl.Db.Config
 {
@@ -29,6 +30,7 @@ namespace SmartCtl.Db.Config
             builder.Property(a => a.PowerOnHours).IsRequired();
             builder.Property(a => a.PowerCycleCount).IsRequired();
             builder.Property(a => a.Temperature).IsRequired();
+            builder.Property(a => a.DateLastUpdated).IsRequired(false);
         }
     }
 }

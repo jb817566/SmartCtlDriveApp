@@ -4,14 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartCtl.Console
+namespace SmartCtl.Domain
 {
     public static class ProcessAsyncHelperUtility
     {
         public static async Task<StringBuilder> ExecuteShellCommand(string command, string arguments, string tag, string workingDir = null,
             string[] quitLines = null, bool silent = true)
         {
-            System.Console.WriteLine($"--------\n{command} {arguments}\n    ----------");
+            if (!silent)
+            {
+                System.Console.WriteLine($"--------\n{command} {arguments}\n    ----------");
+            }
+
             StringBuilder outputBuilder = new StringBuilder();
             using (Process process = new Process())
             {

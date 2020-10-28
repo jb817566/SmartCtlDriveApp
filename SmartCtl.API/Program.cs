@@ -15,7 +15,15 @@ namespace SmartCtl.API
     {
         public static async Task Main(string[] args)
         {
-            await new SmartCtlContext().Database.MigrateAsync();
+            try
+            {
+                await new SmartCtlContext().Database.MigrateAsync();
+            }
+            catch
+            {
+
+            }
+
             CreateHostBuilder(args).Build().Run();
         }
 

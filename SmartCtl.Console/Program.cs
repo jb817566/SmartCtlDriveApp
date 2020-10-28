@@ -7,6 +7,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using SmartCtl.Domain;
 using SmartCtl.Domain.Model;
 
 namespace SmartCtl.Console

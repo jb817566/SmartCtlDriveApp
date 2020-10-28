@@ -32,6 +32,13 @@ namespace SmartCtl.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "SmartCtl.API", Version = "v1" });
             });
+            services.AddCors(options => options.AddPolicy("CorsPolicy", builder =>
+            {
+                builder
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .WithOrigins("*");
+            }));
             services.AddScoped<DriveInformationUtility>();
         }
 
@@ -48,6 +55,8 @@ namespace SmartCtl.API
             app.UseRouting();
 
             app.UseAuthorization();
+            app.UseCors("CorsPolicy");
+
 
             app.UseEndpoints(endpoints =>
             {
