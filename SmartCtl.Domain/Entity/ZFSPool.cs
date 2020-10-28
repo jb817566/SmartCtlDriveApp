@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using SmartCtl.Domain.Enum;
 
 namespace SmartCtl.Domain.Entity
 {
@@ -27,6 +29,7 @@ namespace SmartCtl.Domain.Entity
         /// </summary>
         public double Capacity { get; set; }
         public double Available { get; set; }
+        public CompressionType CompressionType { get; set; }
 
         public void FillProperty(string name, string value)
         {
@@ -61,6 +64,8 @@ namespace SmartCtl.Domain.Entity
                 case "checksum":
                     break;
                 case "compression":
+                    this.CompressionType =
+                        Constants.CompressionTypes.FirstOrDefault(a => a.ToString().ToLower() == value);
                     break;
                 case "atime":
                     break;

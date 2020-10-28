@@ -87,8 +87,14 @@ namespace SmartCtl.Db.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<double>("Available")
+                        .HasColumnType("REAL");
+
                     b.Property<double>("Capacity")
                         .HasColumnType("REAL");
+
+                    b.Property<int>("CompressionType")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("TEXT");

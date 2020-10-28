@@ -48,7 +48,9 @@ namespace SmartCtl.Db.Migrations
                     MountPoint = table.Column<string>(nullable: true),
                     DateCreated = table.Column<DateTime>(nullable: false),
                     MemberCount = table.Column<int>(nullable: false),
-                    Capacity = table.Column<double>(nullable: false)
+                    Capacity = table.Column<double>(nullable: false),
+                    Available = table.Column<double>(nullable: false),
+                    CompressionType = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

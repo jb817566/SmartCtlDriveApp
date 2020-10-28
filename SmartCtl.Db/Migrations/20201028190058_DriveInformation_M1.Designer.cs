@@ -9,7 +9,7 @@ using SmartCtl.Db;
 namespace SmartCtl.Db.Migrations
 {
     [DbContext(typeof(SmartCtlContext))]
-    [Migration("20201028174856_DriveInformation_M1")]
+    [Migration("20201028190058_DriveInformation_M1")]
     partial class DriveInformation_M1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -89,8 +89,14 @@ namespace SmartCtl.Db.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<double>("Available")
+                        .HasColumnType("REAL");
+
                     b.Property<double>("Capacity")
                         .HasColumnType("REAL");
+
+                    b.Property<int>("CompressionType")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("TEXT");

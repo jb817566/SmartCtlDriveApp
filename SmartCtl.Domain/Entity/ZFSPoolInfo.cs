@@ -1,4 +1,5 @@
 ﻿using System;
+using SmartCtl.Domain.Enum;
 
 namespace SmartCtl.Domain.Entity
 {

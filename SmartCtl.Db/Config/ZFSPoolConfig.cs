@@ -16,8 +16,10 @@ namespace SmartCtl.Db.Config
             builder.Property(a => a.ID).ValueGeneratedOnAdd();
             builder.Property(a => a.PoolName).IsRequired().HasMaxLength(512);
             builder.Property(a => a.MountPoint).IsRequired();
+            builder.Property(a => a.Available).IsRequired();
             builder.Property(a => a.Capacity).IsRequired();
             builder.Property(a => a.MemberCount).IsRequired();
+            builder.Property(a => a.CompressionType).IsRequired();
             builder.Property(a => a.DateCreated).IsRequired();
         }
     }
